@@ -18,12 +18,12 @@
 				</td>
 			</tr>
 			<tr ng-repeat="line in list track by $index" class="line">
-				<td><input type="checkbox" ng-model="line.done"/></td>
+				<td><input class="leftTd" type="checkbox" ng-model="line.done"/></td>
 				<td class="separator"></td>
 				<td class="rightTd"><span ng-class="{'done':line.done}">{{line.text}}</span></td>
 			</tr>
-			<tr>
-				<td></td>
+			<tr class="line">
+				<td class="leftTd"></td>
 				<td class="separator"></td>
 				<td class="rightTd"><span class="remaining">{{left()}} task(s) remaining</span></td>
 			</tr>
