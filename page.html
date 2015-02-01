@@ -9,9 +9,9 @@
     <div ng-controller="ToDoListController" id="content">
 		<table class="list">
 			<tr class="line">
-				<td></td>
+				<td style="width:22px"></td>
 				<td class="separator"></td>
-				<td>
+				<td style="padding-left:5px">
 					<form ng-submit="submit()">
 						<input ng-model="newLine" placeholder="I want to..." class="todoInput">
 					</form>
@@ -20,12 +20,12 @@
 			<tr ng-repeat="line in list track by $index" class="line">
 				<td><input type="checkbox" ng-model="line.done"/></td>
 				<td class="separator"></td>
-				<td><span ng-class="{'done':line.done}">{{line.text}}</span></td>
+				<td style="padding-left:5px"><span ng-class="{'done':line.done}">{{line.text}}</span></td>
 			</tr>
 			<tr>
 				<td></td>
 				<td class="separator"></td>
-				<td><span class="remaining">{{left()}} task(s) remaining</span></td>
+				<td style="padding-left:5px"><span class="remaining">{{left()}} task(s) remaining</span></td>
 			</tr>
 		</table>
     </div>
