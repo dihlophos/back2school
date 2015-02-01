@@ -1,17 +1,4 @@
-/*
-	Обязательно прочитай про именование css классов: https://ru.bem.info/articles/bem-for-small-projects/#Пусть-ваш-css-говорит-сам-за-себя
-	Сейчас самая большая проблема что названия классов не имеют ничего общего с их смыслом.
-
-	Скажем, вместо leftTd класс стоит назвать td-done,
-	а вместо rightTd - td-text
-
-	Сами имена классов должны быть более специфическими.
-	.list - какой лист? их в приложении может быть сотня. Лучше назвать .todo-list
-
-	В общем внимательно прочитай БЭМ.
-*/
-
-#content
+#todo-main-content
 {
 	font-family: 'Roboto', sans-serif;
 	margin: 20px;
@@ -19,12 +6,29 @@
 	width:300px;
 	box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
-.done
+
+.todo-list
 {
-	text-decoration:line-through;
+    border-collapse: collapse;
+	width:100%;
 }
 
-.todoInput
+.todo-list__line
+{
+	font-size:20px;
+	color:#4a4a4a;
+	font-style:italic;
+	font-weight:bold;
+}
+
+.todo-list__line td
+{
+	height: 40px;
+	border-bottom: 1px solid #d6d6d6;
+	text-overflow: ellipsis;
+}
+
+.todo-input__text-field
 {
 	font-size:20px;
 	color:#a0a0a0;
@@ -33,7 +37,44 @@
 	font-style:italic;
 }
 
-.rightTd
+.todo-input__text-field::-webkit-input-placeholder {
+	font-family: 'Roboto', sans-serif;
+	font-size:20px;
+	color:#d2d2d2;
+	font-style:italic;
+}
+.todo-input__text-field:-moz-placeholder {
+	font-family: 'Roboto', sans-serif;
+	font-size:20px;
+	color:#d2d2d2;
+	font-style:italic;
+}
+.todo-input__text-field::-moz-placeholder {
+	font-family: 'Roboto', sans-serif;
+	font-size:20px;
+	color:#d2d2d2;
+	font-style:italic;
+}
+.todo-input__text-field:-ms-input-placeholder {
+	font-family: 'Roboto', sans-serif;
+	font-size:20px;
+	color:#d2d2d2;
+	font-style:italic;
+}
+
+.td-done
+{
+	width: 40px;
+	text-align:center;
+}
+
+.td-separator
+{
+	border-left: 1px solid #F7D3D8;
+	border-right: 1px solid #F7D3D8;
+}
+
+.td-text
 {
 	padding-left: 10px;
 	max-width: 200px;
@@ -42,68 +83,15 @@
 	text-overflow: ellipsis;
 }
 
-.separator
+.td-text_done
 {
-	border-left: 1px solid #F7D3D8;
-	border-right: 1px solid #F7D3D8;
+	text-decoration:line-through;
 }
 
-.leftTd
-{
-	width: 40px;
-	text-align:center;
-}
-
-.list
-{
-    border-collapse: collapse;
-	width:100%;
-}
-
-.line
-{
-	font-size:20px;
-	color:#4a4a4a;
-	font-style:italic;
-	font-weight:bold;
-}
-
-.line td
-{
-	height: 40px;
-	border-bottom: 1px solid #d6d6d6;
-	text-overflow: ellipsis;
-}
-
-.remaining
+.todo-remaining
 {
 	font-size:12px;
 	color:#a6a6a6;
 	font-style: normal;
 	font-weight:normal;
-}
-
-.todoInput::-webkit-input-placeholder {
-	font-family: 'Roboto', sans-serif;
-	font-size:20px;
-	color:#d2d2d2;
-	font-style:italic;
-}
-.todoInput:-moz-placeholder {
-	font-family: 'Roboto', sans-serif;
-	font-size:20px;
-	color:#d2d2d2;
-	font-style:italic;
-}
-.todoInput::-moz-placeholder {
-	font-family: 'Roboto', sans-serif;
-	font-size:20px;
-	color:#d2d2d2;
-	font-style:italic;
-}
-.todoInput:-ms-input-placeholder {
-	font-family: 'Roboto', sans-serif;
-	font-size:20px;
-	color:#d2d2d2;
-	font-style:italic;
 }

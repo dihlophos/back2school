@@ -1,42 +1,34 @@
 <!doctype html>
 <html>
   <head>
-	  <!-- Стоит использовать последнюю стабильную версию ангуляра. Сейчас это 1.3.x
-	  Список версий есть в документации https://docs.angularjs.org/api в дропдауне слева
-	  -->
-	  <!-- Хорошая практика объявлять скрипты последними элементами тэга body.
-	  Так браузер (и юзер) не ждет пока прогрузятся все скрипты, а видит статическую страничку.
-	  Css подключаются в head - это правильно -->
-    <script src="http://code.angularjs.org/1.3.9/angular.min.js"></script>
-    <script src="script.js"></script>
 	<link href="style.css" rel="stylesheet" type="text/css"/>
 	<link href='http://fonts.googleapis.com/css?family=Roboto:300,300italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
   </head>
   <body>
-    <div ng-app="toDoList" ng-controller="toDoListController" id="content">
-		<table class="list">
-			<tr class="line">
-				<td class="leftTd"></td>
-				<td class="separator"></td>
-				<td class="rightTd">
+    <div ng-app="toDoList" ng-controller="toDoListController" id="todo-main-content">
+		<table class="todo-list">
+			<tr class="todo-list__line">
+				<td class="td-done"></td>
+				<td class="td-separator"></td>
+				<td class="td-text">
 					<form ng-submit="addNewTodo()">
-						<input ng-model="newLine" placeholder="I want to..." class="todoInput">
+						<input ng-model="newLine" placeholder="I want to..." class="todo-input__text-field">
 					</form>
 				</td>
 			</tr>
-			<tr ng-repeat="line in list track by $index" class="line">
-				<td><input class="leftTd" type="checkbox" ng-model="line.done"/></td>
-				<td class="separator"></td>
-				<td class="rightTd"><span ng-class="{'done':line.done}">{{line.text}}</span></td>
+			<tr ng-repeat="line in list track by $index" class="todo-list__line">
+				<td><input class="td-done" type="checkbox" ng-model="line.done"/></td>
+				<td class="td-separator"></td>
+				<td class="td-text"><span ng-class="{'td-text_done':line.done}">{{line.text}}</span></td>
 			</tr>
-			<tr class="line">
-				<td class="leftTd"></td>
-				<td class="separator"></td>
-				<td class="rightTd"><span class="remaining">{{getRemainingCount()}} task(s) remaining</span></td>
+			<tr class="todo-list__line">
+				<td class="td-done"></td>
+				<td class="td-separator"></td>
+				<td class="td-text"><span class="todo-remaining">{{getRemainingCount()}} task(s) remaining</span></td>
 			</tr>
 		</table>
     </div>
-  <!--
-  Тэг body не закрыт. Используй инструмент, который будет сообщать о таких проблемах.
-  Я в последнее время юзаю WebStorm. -->
+	<script src="http://code.angularjs.org/1.3.9/angular.min.js"></script>
+    <script src="script.js"></script>
+  </body>
 </html>

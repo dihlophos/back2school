@@ -6,20 +6,17 @@ angular.module('toDoList', []).controller('toDoListController', function($scope)
 	// https://docs.angularjs.org/guide/introduction
 	$scope.newLine = '';
 
-	// хорошим стилем является именование методов начиная с глагола. Методы выполняют действие.
-	// лучше назвать getRemainingCount
 	$scope.getRemainingCount = function() {
-	var left = 0 //точки с запятой. Их отсутствие может стать проблемой при минификации кода. Юзай IDE с синтаксическим контролем.
+	var left = 0;
 	angular.forEach($scope.list,function(line) {
 		left += line.done ? 0 : 1;
 	});
     return left;
 	};
 
-	//название метода тоже ни о чем не говорит. Сабмит чего? Пусть будет addNewTodo
 	$scope.addNewTodo = function() {
 		if ($scope.newLine) {
-		  $scope.list.push({text:$scope.newLine,done:false}); //юзай пробелы :)
+		  $scope.list.push({text:$scope.newLine, done:false});
 		  $scope.newLine = '';
 		}
 	};
