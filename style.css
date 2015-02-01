@@ -66,21 +66,25 @@
 }
 
 .todoInput::-webkit-input-placeholder {
+	font-family: 'Roboto', sans-serif;
 	font-size:20px;
 	color:#d2d2d2;
 	font-style:italic;
 }
 .todoInput:-moz-placeholder {
+	font-family: 'Roboto', sans-serif;
 	font-size:20px;
 	color:#d2d2d2;
 	font-style:italic;
 }
 .todoInput::-moz-placeholder {
+	font-family: 'Roboto', sans-serif;
 	font-size:20px;
 	color:#d2d2d2;
 	font-style:italic;
 }
 .todoInput:-ms-input-placeholder {
+	font-family: 'Roboto', sans-serif;
 	font-size:20px;
 	color:#d2d2d2;
 	font-style:italic;
