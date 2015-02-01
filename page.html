@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app>
+<html>
   <head>
 	  <!-- Стоит использовать последнюю стабильную версию ангуляра. Сейчас это 1.3.x
 	  Список версий есть в документации https://docs.angularjs.org/api в дропдауне слева
@@ -13,7 +13,7 @@
 	<link href='http://fonts.googleapis.com/css?family=Roboto:300,300italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
   </head>
   <body>
-    <div ng-controller="ToDoListController" id="content">
+    <div ng-app="toDoList" ng-controller="toDoListController" id="content">
 		<table class="list">
 			<tr class="line">
 				<td class="leftTd"></td>

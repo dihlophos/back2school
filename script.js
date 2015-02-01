@@ -1,10 +1,4 @@
-/*
-	Когда открыл файл, не сразу понял где тут ангуляр :) Первый раз вижу такой способ описания контроллера.
-	По-правильному, нужно создать модуль, а в нем завести контроллер.
-	Подробнее тут: https://docs.angularjs.org/api/ng/directive/ngApp
- */
-
-function ToDoListController($scope){
+angular.module('toDoList', []).controller('toDoListController', function($scope) {
 	$scope.list = [];
 
 	//в этой строке есть bad-practice, который может привести к очень печальным последствиям.
@@ -20,7 +14,7 @@ function ToDoListController($scope){
 		left += line.done ? 0 : 1;
 	});
     return left;
-	}
+	};
 
 	//название метода тоже ни о чем не говорит. Сабмит чего? Пусть будет addNewTodo
 	$scope.submit = function() {
@@ -28,5 +22,5 @@ function ToDoListController($scope){
 		  $scope.list.push({text:$scope.newLine,done:false}); //юзай пробелы :)
 		  $scope.newLine = '';
 		}
-	}
-}
+	};
+});
