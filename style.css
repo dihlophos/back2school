@@ -23,6 +23,7 @@
 .rightTd
 {
 	padding-left: 10px;
+	max-width: 200px;
 }
 
 .separator
@@ -54,6 +55,7 @@
 {
 	height: 40px;
 	border-bottom: 1px solid #d6d6d6;
+	word-wrap: break-word;
 }
 
 .remaining
