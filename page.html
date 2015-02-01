@@ -1,0 +1,21 @@
+<!doctype html>
+<html ng-app>
+  <head>
+    <script src="http://code.angularjs.org/1.1.4/angular.min.js"></script>
+    <script src="script.js"></script>
+	<link href="style.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+    <div ng-controller="ToDoListController" id="content">
+		<form ng-submit="submit()">
+			<input ng-model="newLine" placeholder="I want to..." class="todoInput">
+		</form>
+		<table>
+				<tr ng-repeat="line in list track by $index">
+					<td><input type="checkbox" ng-model="line.done"/></td>
+					<td><span class="line" ng-class="{'done':line.done}">{{line.text}}</span></td>
+				</tr>
+		</table>
+		<span class="remaining">{{left()}} task(s) remaining</span>
+    </div>
+</html>
