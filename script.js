@@ -1,18 +1,18 @@
-angular.module('toDoList', []).controller('toDoListController', function($scope) {
-	$scope.list = [];
-
-	$scope.getRemainingCount = function() {
+angular.module('toDoList', []).controller('toDoListController', function() {
+	this.list = [];
+	
+	this.getRemainingCount = function() {
 	var left = 0;
-	angular.forEach($scope.list,function(line) {
+	angular.forEach(this.list,function(line) {
 		left += line.done ? 0 : 1;
 	});
     return left;
 	};
 
-	$scope.addNewTodo = function() {
-		if ($scope.newLine) {
-		  $scope.list.push({text:$scope.newLine, done:false});
-		  $scope.newLine = '';
+	this.addNewTodo = function() {
+		if (this.newLine) {
+		  this.list.push({text:this.newLine, done:false});
+		  this.newLine='';
 		}
 	};
 });

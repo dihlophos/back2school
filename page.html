@@ -5,18 +5,18 @@
 	<link href='http://fonts.googleapis.com/css?family=Roboto:300,300italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
   </head>
   <body>
-    <div ng-app="toDoList" ng-controller="toDoListController" id="todo-main-container">
+    <div ng-app="toDoList" ng-controller="toDoListController as todo" id="todo-main-container">
 		<table class="todo-list">
 			<tr class="todo-list__line">
 				<td class="td-done"></td>
 				<td class="td-separator"></td>
 				<td class="td-text">
-					<form ng-submit="addNewTodo()">
-						<input ng-model="newLine" placeholder="I want to..." class="todo-input__text-field">
+					<form ng-submit="todo.addNewTodo()">
+						<input ng-model="todo.newLine" placeholder="I want to..." class="todo-input__text-field">
 					</form>
 				</td>
 			</tr>
-			<tr ng-repeat="line in list track by $index" class="todo-list__line">
+			<tr ng-repeat="line in todo.list track by $index" class="todo-list__line">
 				<td><input class="td-done" type="checkbox" ng-model="line.done"/></td>
 				<td class="td-separator"></td>
 				<td class="td-text"><span ng-class="{'td-text_done':line.done}">{{line.text}}</span></td>
@@ -24,7 +24,7 @@
 			<tr class="todo-list__line">
 				<td class="td-done"></td>
 				<td class="td-separator"></td>
-				<td class="td-text"><span class="todo-remaining">{{getRemainingCount()}} task(s) remaining</span></td>
+				<td class="td-text"><span class="todo-remaining">{{todo.getRemainingCount()}} task(s) remaining</span></td>
 			</tr>
 		</table>
     </div>
