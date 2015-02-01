@@ -4,6 +4,7 @@
 	padding: 20px;
 	background-color: white;
 	width:300px;
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 .done
 {
@@ -53,7 +54,7 @@
 .remaining
 {
 	font-size:12px;
-	color:#4a4a4a;
+	color:#a6a6a6;
 }
 
 .todoInput::-webkit-input-placeholder {
