@@ -1,3 +1,9 @@
+@font-face{
+    font-family: "Thonburi-Bold";
+    src: url('Thonburi-Bold.ttf'),
+    url('Thonburi-Bold.eot'); /* IE */
+}
+
 #content
 {
 	font-family: 'Roboto', sans-serif;
@@ -16,11 +22,13 @@
 	font-size:20px;
 	color:#a0a0a0;
 	border:0px;
+	color: #4a4a4a;
+	font-style:italic;
 }
 
 .rightTd
 {
-	padding-left: 5px;
+	padding-left: 10px;
 }
 
 .separator
@@ -62,21 +70,21 @@
 
 .todoInput::-webkit-input-placeholder {
 	font-size:20px;
-	color:#a0a0a0;
+	color:#d2d2d2;
 	font-style:italic;
 }
 .todoInput:-moz-placeholder {
 	font-size:20px;
-	color:#a0a0a0;
+	color:#d2d2d2;
 	font-style:italic;
 }
 .todoInput::-moz-placeholder {
 	font-size:20px;
-	color:#a0a0a0;
+	color:#d2d2d2;
 	font-style:italic;
 }
 .todoInput:-ms-input-placeholder {
 	font-size:20px;
-	color:#a0a0a0;
+	color:#d2d2d2;
 	font-style:italic;
 }
