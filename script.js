@@ -17,7 +17,7 @@ angular.module('toDoList', []).controller('toDoListController', function($scope)
 	};
 
 	//название метода тоже ни о чем не говорит. Сабмит чего? Пусть будет addNewTodo
-	$scope.submit = function() {
+	$scope.addNewTodo = function() {
 		if ($scope.newLine) {
 		  $scope.list.push({text:$scope.newLine,done:false}); //юзай пробелы :)
 		  $scope.newLine = '';
