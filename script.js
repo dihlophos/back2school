@@ -8,7 +8,7 @@ angular.module('toDoList', []).controller('toDoListController', function($scope)
 
 	// хорошим стилем является именование методов начиная с глагола. Методы выполняют действие.
 	// лучше назвать getRemainingCount
-	$scope.left = function() {
+	$scope.getRemainingCount = function() {
 	var left = 0 //точки с запятой. Их отсутствие может стать проблемой при минификации кода. Юзай IDE с синтаксическим контролем.
 	angular.forEach($scope.list,function(line) {
 		left += line.done ? 0 : 1;
