@@ -1,16 +1,17 @@
 myDBService = function ($http, $q) {
 
     getItems = function (url) {
-
+		
         var deferred = $q.defer();
-
+		
         $http.get(url)
             .success(function (data, status, headers, config) {
+				console.log(data);
                 deferred.resolve(data);
             }).error(function (data, status, headers, config) {
                 deferred.reject(data);
             });
-
+		
         return deferred.promise;
     };
 

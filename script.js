@@ -21,15 +21,24 @@ app.controller('toDoListController', function($scope, myDBService, DBConfig) {
 	    if ($scope.newLine) {
 			var todo = { _id: $scope.list.length, text: $scope.newLine, done: false }
 	        $scope.list.push(todo);
-			myDBService.upsertItem(DBConfig.url, todo)
-				.then(function (data) {
-					$scope.message = data;
-				}, function (data) {
-					console.log("Huh, that's bad...");
-				});
+			updateDBDocument(todo);
 	        $scope.newLine = '';
 		}
 	};
+	
+	$scope.updateTodo = function(line)	{
+		updateDBDocument(line);
+	}
+	
+	updateDBDocument = function (doc) {
+		myDBService.upsertItem(DBConfig.url, line)
+			.then(function (data) {
+				console.log("Updated:" + data);
+			}, function (data) {
+				console.log("Huh, that's bad...");
+			});	
+	}
+	
 });
 
 app.factory('myDBService', myDBService);
