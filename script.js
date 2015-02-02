@@ -8,7 +8,7 @@ app.controller('toDoListController', function($scope, myDBService, DBConfig) {
         }, function (data) {
             console.log("Huh, that's bad...");
         });
-
+	
 	$scope.getRemainingCount = function() {
 	    var left = 0;
 	    angular.forEach($scope.list, function (line) {
@@ -27,13 +27,14 @@ app.controller('toDoListController', function($scope, myDBService, DBConfig) {
 	};
 	
 	$scope.updateTodo = function(line)	{
+		console.log("!!")
 		updateDBDocument(line);
 	}
 	
 	updateDBDocument = function (doc) {
-		myDBService.upsertItem(DBConfig.url, line)
+		myDBService.upsertItem(DBConfig.url, doc)
 			.then(function (data) {
-				console.log("Updated:" + data);
+				console.log("Updated: id=" + doc._id);
 			}, function (data) {
 				console.log("Huh, that's bad...");
 			});	
