@@ -42,4 +42,5 @@ app.controller('toDoListController', function($scope, myDBService, DBConfig) {
 	
 });
 
+//фактори лучше цеплять к модулю в месте ее определения, то есть в файле с фактори
 app.factory('myDBService', myDBService);

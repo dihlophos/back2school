@@ -1,9 +1,14 @@
+//назови файл и сервис более специфично, например todo.service.js и ToDoService
+//CRUD методы можно назвать традиционным для ангуляра способом: query, save
+
 myDBService = function ($http, $q) {
 
     getItems = function (url) {
 		
         var deferred = $q.defer();
-		
+
+        //$http.xxx и так возвращает промис.
+        //вряд ли есть смысл делать свой собственный промис
         $http.get(url)
             .success(function (data, status, headers, config) {
                 deferred.resolve(data);
