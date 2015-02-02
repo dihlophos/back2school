@@ -28,6 +28,6 @@ myDBService = function ($http, $q) {
         return deferred.promise;
     };
 
-    return { getItems: getItems, insertItem: insertItem };
+    return { getItems: getItems, upsertItem: upsertItem };
 };
 

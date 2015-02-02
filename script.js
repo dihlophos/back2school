@@ -1,6 +1,13 @@
-angular.module('toDoList', []).controller('toDoListController', function($scope) {
+var app = angular.module('toDoList', []);
+app.constant("DBConfig", { url: "https://api.mongolab.com/api/1/databases/tododb/collections/todolist?apiKey=CRZEn0TYiLT1CZpV1_1Jr5LfUvEp4O3n" });
+app.controller('toDoListController', function($scope, myDBService, DBConfig) {
     
-	$scope.list = [];
+	myDBService.getItems(DBConfig.url)
+        .then(function (data) {
+            $scope.list = data;
+        }, function (data) {
+            console.log("Huh, that's bad...");
+        });
 
 	$scope.getRemainingCount = function() {
 	    var left = 0;
@@ -12,8 +19,17 @@ angular.module('toDoList', []).controller('toDoListController', function($scope)
 
     $scope.addNewTodo = function () {
 	    if ($scope.newLine) {
-	        $scope.list.push({ text: $scope.newLine, done: false });
+			var todo = { _id: $scope.list.length, text: $scope.newLine, done: false }
+	        $scope.list.push(todo);
+			myDBService.upsertItem(DBConfig.url, todo)
+				.then(function (data) {
+					$scope.message = data;
+				}, function (data) {
+					console.log("Huh, that's bad...");
+				});
 	        $scope.newLine = '';
 		}
 	};
 });
+
+app.factory('myDBService', myDBService);
