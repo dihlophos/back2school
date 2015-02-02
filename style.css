@@ -13,10 +13,7 @@
 	width:100%;
 }
 
-/*
-  Таки прочитай про БЭМ. И замени __ на -
-*/
-.todo-list__line
+.todo-list-line
 {
 	font-size:20px;
 	color:#4a4a4a;
@@ -24,14 +21,14 @@
 	font-weight:bold;
 }
 
-.todo-list__line td
+.todo-list-line td
 {
 	height: 40px;
 	border-bottom: 1px solid #d6d6d6;
 	text-overflow: ellipsis;
 }
 
-.todo-input__text-field
+.todo-input-text-field
 {
 	font-size:20px;
 	color:#a0a0a0;
@@ -40,25 +37,25 @@
 	font-style:italic;
 }
 
-.todo-input__text-field::-webkit-input-placeholder {
+.todo-input-text-field::-webkit-input-placeholder {
 	font-family: 'Roboto', sans-serif;
 	font-size:20px;
 	color:#d2d2d2;
 	font-style:italic;
 }
-.todo-input__text-field:-moz-placeholder {
+.todo-input-text-field:-moz-placeholder {
 	font-family: 'Roboto', sans-serif;
 	font-size:20px;
 	color:#d2d2d2;
 	font-style:italic;
 }
-.todo-input__text-field::-moz-placeholder {
+.todo-input-text-field::-moz-placeholder {
 	font-family: 'Roboto', sans-serif;
 	font-size:20px;
 	color:#d2d2d2;
 	font-style:italic;
 }
-.todo-input__text-field:-ms-input-placeholder {
+.todo-input-text-field:-ms-input-placeholder {
 	font-family: 'Roboto', sans-serif;
 	font-size:20px;
 	color:#d2d2d2;
