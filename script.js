@@ -1,6 +1,6 @@
 var app = angular.module('toDoList', []);
 app.constant("DBConfig", { url: "https://api.mongolab.com/api/1/databases/tododb/collections/todolist?apiKey=CRZEn0TYiLT1CZpV1_1Jr5LfUvEp4O3n" });
-app.controller('toDoListController', function($scope, ToDoService, DBConfig) {
+app.controller('toDoListController', function ($scope, ToDoService, DBConfig) {
     
 	ToDoService.getItems(DBConfig.url)
         .then(function (data) {
@@ -40,6 +40,3 @@ app.controller('toDoListController', function($scope, ToDoService, DBConfig) {
 	}
 	
 });
-
-//фактори лучше цеплять к модулю в месте ее определения, то есть в файле с фактори
-app.factory('ToDoService', ToDoService);
