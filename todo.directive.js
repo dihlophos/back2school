@@ -2,22 +2,12 @@ angular.module('toDoList').directive('todoList', function (ToDoService) {
 	
 	function link(scope, element, attrs) {
 		
+		getDBDocuments();
+		
 		scope.$on("todoListUpdated", function()
 		{
-			ToDoService.queryToDoList()
-				.then(function (answer) {
-					scope.list = answer.data;
-				}, function (answer) {
-					console.log("Error. Status: " + answer.status + "; StatusText: " + answer.statusText);
-				});		
-		})
-		
-		ToDoService.queryToDoList()
-        .then(function (answer) {
-            scope.list = answer.data;
-        }, function (answer) {
-            console.log("Error. Status: " + answer.status + "; StatusText: " + answer.statusText);
-        });
+			getDBDocuments();	
+		});
 
 		scope.getRemainingCount = function () {
 			var left = 0;
@@ -30,26 +20,34 @@ angular.module('toDoList').directive('todoList', function (ToDoService) {
 		scope.addNewTodo = function () {
 			if (scope.newLine) {
 				var todo = { _id: scope.list.length, text: scope.newLine, done: false }
-				scope.list.push(todo);
 				updateDBDocument(todo);
 				scope.newLine = '';
-				scope.$parent.$broadcast("todoListUpdated");
 			}
 		};
 
 		scope.updateTodo = function (line) {
 			updateDBDocument(line);
-			scope.$parent.$broadcast("todoListUpdated");
-		}
-
-		updateDBDocument = function (doc) {
+		};
+		
+		function getDBDocuments() {
+			ToDoService.queryToDoList()
+				.then(function (answer) {
+					scope.list=answer.data;
+				}, function (answer) {
+					console.log("Error. Status: " + answer.status + "; StatusText: " + answer.statusText);
+					return [];
+				});
+		};
+		
+		function updateDBDocument(doc) {
 			ToDoService.saveToDo(doc)
 				.then(function (answer) {
+					scope.$parent.$broadcast("todoListUpdated");
 					console.log("Updated: id=" + doc._id);
 				}, function (answer) {
 					console.log("Error. Status: " + answer.status + "; StatusText: " + answer.statusText);
 				});
-		}
+		};
 		
 	}
 	
@@ -59,6 +57,6 @@ angular.module('toDoList').directive('todoList', function (ToDoService) {
 		scope:{
 			disabled:"="
 		},
-		link:link
+		link:link,
     };
 });

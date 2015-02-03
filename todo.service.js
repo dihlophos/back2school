@@ -7,7 +7,6 @@ angular.module('toDoList').factory('ToDoService', function ($http) {
     };
 
     saveToDo = function (todo) {
-
         return $http.post(todoCollectionUrl, todo);
     };
 
