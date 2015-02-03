@@ -34,7 +34,7 @@ app.controller('toDoListController', function ($scope, ToDoService) {
 			.then(function (answer) {
 			    console.log("Updated: id=" + doc._id);
 			}, function (answer) {
-			    console.log("Error. Status: ;" + answer.status + " StatusText: " + answer.statusText);
+			    console.log("Error. Status: " + answer.status + "; StatusText: " + answer.statusText);
 			});
     }
 
