@@ -1,9 +1,12 @@
 angular.module('toDoList').directive('todoList', function (ToDoService) {
-	
+
+	//функция link (как и подразумевает ее название) нужна для работы с DOM
+	//логика директивы (которая уже не взаимодействует с DOM напрямую) должна находиться в функции controller
 	function link(scope, element, attrs) {
 		
 		getDBDocuments();
-		
+
+		//можно записать короче: scope.$on("todoListUpdated", getDBDocuments)
 		scope.$on("todoListUpdated", function()
 		{
 			getDBDocuments();	
@@ -42,6 +45,9 @@ angular.module('toDoList').directive('todoList', function (ToDoService) {
 		function updateDBDocument(doc) {
 			ToDoService.saveToDo(doc)
 				.then(function (answer) {
+					//ты делаешь рассылку событий с уровня родителя текущего скоупа.
+					//в этом случае, если разные тудулисты будут находиться в родителе родителя текущего скоупа, или в любом из его дочерних скоупов - они не получат сообщения.
+					//в данном случае событие нужно кидать с уровня $rootScope
 					scope.$parent.$broadcast("todoListUpdated");
 					console.log("Updated: id=" + doc._id);
 				}, function (answer) {
