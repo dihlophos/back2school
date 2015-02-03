@@ -1,9 +1,8 @@
 //CRUD методы можно назвать традиционным для ангуляра способом: query, save
-
-ToDoService = function ($http, $q) {
+var app = angular.module('toDoList').factory('ToDoService', function ($http, $q) {
 
     getItems = function (url) {
-		
+
         var deferred = $q.defer();
 
         //$http.xxx и так возвращает промис.
@@ -14,11 +13,11 @@ ToDoService = function ($http, $q) {
             }).error(function (data, status, headers, config) {
                 deferred.reject(data);
             });
-		
+
         return deferred.promise;
     };
 
-    upsertItem = function(url,item) {
+    upsertItem = function (url, item) {
 
         var deferred = $q.defer();
 
@@ -33,5 +32,4 @@ ToDoService = function ($http, $q) {
     };
 
     return { getItems: getItems, upsertItem: upsertItem };
-};
-
+});
