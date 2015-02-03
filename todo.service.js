@@ -1,13 +1,14 @@
-//CRUD методы можно назвать традиционным для ангуляра способом: query, save
 var app = angular.module('toDoList').factory('ToDoService', function ($http, $q) {
 
-    getItems = function (url) {
+    var todoCollectionUrl = "https://api.mongolab.com/api/1/databases/tododb/collections/todolist?apiKey=CRZEn0TYiLT1CZpV1_1Jr5LfUvEp4O3n";
+
+    queryToDoList = function () {
 
         var deferred = $q.defer();
 
         //$http.xxx и так возвращает промис.
         //вряд ли есть смысл делать свой собственный промис
-        $http.get(url)
+        $http.get(todoCollectionUrl)
             .success(function (data, status, headers, config) {
                 deferred.resolve(data);
             }).error(function (data, status, headers, config) {
@@ -17,11 +18,11 @@ var app = angular.module('toDoList').factory('ToDoService', function ($http, $q)
         return deferred.promise;
     };
 
-    upsertItem = function (url, item) {
+    saveToDo = function (todo) {
 
         var deferred = $q.defer();
 
-        $http.post(url, item)
+        $http.post(todoCollectionUrl, todo)
             .success(function (data, status, headers, config) {
                 deferred.resolve(data);
             }).error(function (data, status, headers, config) {
@@ -31,5 +32,5 @@ var app = angular.module('toDoList').factory('ToDoService', function ($http, $q)
         return deferred.promise;
     };
 
-    return { getItems: getItems, upsertItem: upsertItem };
+    return { queryToDoList: queryToDoList, saveToDo: saveToDo };
 });
