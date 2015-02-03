@@ -1,35 +1,14 @@
 <!doctype html>
-<html>
+<html xmlns:ng="http://angularjs.org" ng-app="toDoList">
   <head>
 	<link href="style.css" rel="stylesheet" type="text/css"/>
 	<link href='http://fonts.googleapis.com/css?family=Roboto:300,300italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
   </head>
-  <body>
-    <div ng-app="toDoList" ng-controller="toDoListController" id="todo-main-container">
-		<table class="todo-list">
-			<tr class="todo-list-line">
-				<td class="td-done"></td>
-				<td class="td-separator"></td>
-				<td class="td-text">
-					<form ng-submit="addNewTodo()">
-						<input ng-model="newLine" placeholder="I want to..." class="todo-input-text-field"/>
-					</form>
-				</td>
-			</tr>
-			<tr ng-repeat="line in list track by $index" class="todo-list-line">
-				<td><input class="td-done" type="checkbox" ng-change="updateTodo(line)" ng-model="line.done"/></td>
-				<td class="td-separator"></td>
-				<td class="td-text"><span ng-class="{'td-text_done':line.done}">{{line.text}}</span></td>
-			</tr>
-			<tr class="todo-list-line">
-				<td class="td-done"></td>
-				<td class="td-separator"></td>
-				<td class="td-text"><span class="todo-remaining">{{getRemainingCount()}} task(s) remaining</span></td>
-			</tr>
-		</table>
-    </div>
-	<script type="text/javascript" src="http://code.angularjs.org/1.3.9/angular.min.js"></script>
-    <script type="text/javascript" src="script.js"></script>
-    <script type="text/javascript" src="todo.service.js"></script>
-  </body>
+    <body ng-controller="toDoListController">
+        <todo-list></todo-list>
+        <script type="text/javascript" src="http://code.angularjs.org/1.3.9/angular.min.js"></script>
+        <script type="text/javascript" src="script.js"></script>
+        <script type="text/javascript" src="todo.service.js"></script>
+        <script type="text/javascript" src="todo.directive.js"></script>
+    </body>
 </html>
