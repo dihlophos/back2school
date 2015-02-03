@@ -2,11 +2,21 @@ angular.module('toDoList').directive('todoList', function (ToDoService) {
 	
 	function link(scope, element, attrs) {
 		
+		scope.$on("todoListUpdated", function()
+		{
+			ToDoService.queryToDoList()
+				.then(function (answer) {
+					scope.list = answer.data;
+				}, function (answer) {
+					console.log("Error. Status: " + answer.status + "; StatusText: " + answer.statusText);
+				});		
+		})
+		
 		ToDoService.queryToDoList()
         .then(function (answer) {
             scope.list = answer.data;
         }, function (answer) {
-            console.log("Error. Status: ;" + answer.status + " StatusText: " + answer.statusText);
+            console.log("Error. Status: " + answer.status + "; StatusText: " + answer.statusText);
         });
 
 		scope.getRemainingCount = function () {
@@ -23,11 +33,13 @@ angular.module('toDoList').directive('todoList', function (ToDoService) {
 				scope.list.push(todo);
 				updateDBDocument(todo);
 				scope.newLine = '';
+				scope.$parent.$broadcast("todoListUpdated");
 			}
 		};
 
 		scope.updateTodo = function (line) {
 			updateDBDocument(line);
+			scope.$parent.$broadcast("todoListUpdated");
 		}
 
 		updateDBDocument = function (doc) {
@@ -38,6 +50,7 @@ angular.module('toDoList').directive('todoList', function (ToDoService) {
 					console.log("Error. Status: " + answer.status + "; StatusText: " + answer.statusText);
 				});
 		}
+		
 	}
 	
     return {
