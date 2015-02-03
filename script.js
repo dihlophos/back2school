@@ -2,7 +2,7 @@ var app = angular.module('toDoList', []);
 app.constant("DBConfig", { url: "https://api.mongolab.com/api/1/databases/tododb/collections/todolist?apiKey=CRZEn0TYiLT1CZpV1_1Jr5LfUvEp4O3n" });
 app.controller('toDoListController', function($scope, myDBService, DBConfig) {
     
-	myDBService.getItems(DBConfig.url)
+	ToDoService.getItems(DBConfig.url)
         .then(function (data) {
             $scope.list = data;
         }, function (data) {
@@ -32,7 +32,7 @@ app.controller('toDoListController', function($scope, myDBService, DBConfig) {
 	}
 	
 	updateDBDocument = function (doc) {
-		myDBService.upsertItem(DBConfig.url, doc)
+		ToDoService.upsertItem(DBConfig.url, doc)
 			.then(function (data) {
 				console.log("Updated: id=" + doc._id);
 			}, function (data) {
@@ -43,4 +43,4 @@ app.controller('toDoListController', function($scope, myDBService, DBConfig) {
 });
 
 //фактори лучше цеплять к модулю в месте ее определения, то есть в файле с фактори
-app.factory('myDBService', myDBService);
+app.factory('ToDoService', ToDoService);
