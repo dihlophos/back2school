@@ -1,8 +1,7 @@
 var app = angular.module('toDoList', []);
-app.constant("DBConfig", { url: "https://api.mongolab.com/api/1/databases/tododb/collections/todolist?apiKey=CRZEn0TYiLT1CZpV1_1Jr5LfUvEp4O3n" });
-app.controller('toDoListController', function ($scope, ToDoService, DBConfig) {
-    
-	ToDoService.getItems(DBConfig.url)
+app.controller('toDoListController', function ($scope, ToDoService) {
+
+    ToDoService.queryToDoList()
         .then(function (data) {
             $scope.list = data;
         }, function (data) {
@@ -31,7 +30,7 @@ app.controller('toDoListController', function ($scope, ToDoService, DBConfig) {
 	}
 	
 	updateDBDocument = function (doc) {
-		ToDoService.upsertItem(DBConfig.url, doc)
+	    ToDoService.saveToDo(doc)
 			.then(function (data) {
 				console.log("Updated: id=" + doc._id);
 			}, function (data) {
