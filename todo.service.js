@@ -1,7 +1,6 @@
-//назови файл и сервис более специфично, например todo.service.js и ToDoService
 //CRUD методы можно назвать традиционным для ангуляра способом: query, save
 
-myDBService = function ($http, $q) {
+ToDoService = function ($http, $q) {
 
     getItems = function (url) {
 		
